@@ -17,4 +17,4 @@ jobs:
         env:
           First_Name: Eric
       - name: repo variables
-        run: echo "hi ! value of var is ${{ vars.var1 }} and today is ${{ vars.day }} "
+        run: echo "hi ! value of var is ${{ vars.var1 }}, value of secret1 is $ {{ secrets.secret1 }} and today is ${{ vars.day }} "
