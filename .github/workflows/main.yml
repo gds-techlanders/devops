@@ -13,12 +13,12 @@ jobs:
         run: |
           echo running workflow in main branch
           hostname
-          sleep 10
+          sleep 1
           touch /tmp/gagandeep13jun
       - name: second step 
         run: echo "hello from second condition based step"
-        if: runner.os == 'Ubuntu'
+        if: runner.os == 'ubuntu'
         
       - name: third step
         run: echo "hello from 3rd step"
-        if: runner.os != 'Ubuntu'
+        if: runner.os != 'ubuntu'
