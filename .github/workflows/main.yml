@@ -7,18 +7,15 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: first step
         run: |
           echo running workflow in main branch
-          hostname
-          sleep 1
-          touch /tmp/gagandeep13jun
       - name: second step 
         run: echo "hello from second condition based step"
-        if: runner.os == 'Ubuntu Linux'
+        if: runner.os == 'Windows'
         
       - name: third step
         run: echo "hello from 3rd step"
-        if: runner.os != 'Ubuntu Linux'
+        if: runner.os != 'Windows'
