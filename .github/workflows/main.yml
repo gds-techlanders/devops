@@ -17,8 +17,8 @@ jobs:
           touch /tmp/gagandeep13jun
       - name: second step 
         run: echo "hello from second condition based step"
-        if: runner.os == 'ubuntu'
+        if: runner.os == 'Ubuntu Linux'
         
       - name: third step
         run: echo "hello from 3rd step"
-        if: runner.os != 'ubuntu'
+        if: runner.os != 'Ubuntu Linux'
