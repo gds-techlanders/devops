@@ -1,13 +1,27 @@
+name: Artifacts
 on:
   push:
-    branches:
-      - main
-
+    branches: [ "main" ]
 jobs:
-  ubuntu_hello:
+  build:
     runs-on: ubuntu-latest
+    environment: dev
     steps:
-      - run: echo "Hello World from Ubuntu Runner!!"
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event"
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "GitHub Repository URL is ${{ github.repositoryUrl}} and branch is ${{ github.ref_name }} "
+      - uses: actions/checkout@v2
+      - run: mkdir -p gagan-dir
+      - run: echo hello > gagan-dir/world.txt
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: gagan-dir/world.txt
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+      - run: |
+          ls -l
+          cat world.txt
