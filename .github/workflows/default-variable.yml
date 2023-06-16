@@ -23,5 +23,5 @@ jobs:
         with:
           name: my-artifact
       - run: |
-          ls -l
           cat world.txt
+          ls
